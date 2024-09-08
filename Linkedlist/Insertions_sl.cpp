@@ -49,6 +49,17 @@ void insertAtKPosition(Node *head,int val,int pos)
     new_node->next=temp->next;
     temp->next=new_node;
 }
+void updateAtPosition(Node* &head,int k,int val)
+{
+    Node* temp=head;
+    int curr_pos=0;
+    while(curr_pos!=k)
+    {
+        temp=temp->next;
+        curr_pos++;
+    }
+    temp->val=val;
+}
 void display(Node* head)
 {
     Node* temp=head;
@@ -70,7 +81,9 @@ int main()
     display(head);
     insertAtTail(head,4);
     display(head);
-    insertAtKPosition(head,9,2);
+    insertAtKPosition(head,9,1);
+    display(head);
+    updateAtPosition(head,2,5);
     display(head);
     return 0;
 }
