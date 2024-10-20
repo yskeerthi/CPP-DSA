@@ -1680,4 +1680,637 @@ e is a vowel.
 
 ---
 
+Sure! Here’s a more comprehensive set of questions and answers on loops in C++. 
+
+### Basic Level Questions (10 Questions)
+
+1. **Question:** Write a program to print the numbers from 1 to 10 using a `for` loop.
+2. **Question:** Write a program to calculate the sum of the first 100 natural numbers using a `while` loop.
+3. **Question:** Write a program that uses a `do-while` loop to print the even numbers from 2 to 20.
+4. **Question:** Write a program to find the factorial of a number using a `for` loop.
+5. **Question:** Write a program that prints the multiplication table of a given number using a `while` loop.
+6. **Question:** Write a program to print the first 10 squares of natural numbers using a `for` loop.
+7. **Question:** Write a program to print the odd numbers from 1 to 20 using a `while` loop.
+8. **Question:** Write a program that prints numbers in reverse order from 10 to 1 using a `for` loop.
+9. **Question:** Write a program that takes an input number and prints "Hello" that many times using a `for` loop.
+10. **Question:** Write a program that counts down from a given number to 1 using a `while` loop.
+
+### Medium Level Questions (10 Questions)
+
+1. **Question:** Write a program to reverse a number using a `while` loop.
+2. **Question:** Write a program to print the Fibonacci series up to `n` terms using a `for` loop.
+3. **Question:** Write a program that counts the number of digits in a given number using a `do-while` loop.
+4. **Question:** Write a program that checks if a number is prime using a `for` loop.
+5. **Question:** Write a program to print a pyramid pattern of stars using nested loops.
+6. **Question:** Write a program to calculate the sum of the first `n` odd numbers using a `for` loop.
+7. **Question:** Write a program to print all multiples of 3 up to 100 using a `while` loop.
+8. **Question:** Write a program to find the sum of all elements in an array using a `for` loop.
+9. **Question:** Write a program that finds the maximum number in an array using a loop.
+10. **Question:** Write a program that prints a triangle of numbers using nested loops.
+
+### Hard Level Questions (20 Questions)
+
+1. **Question:** Write a program that prints all prime numbers between 1 and 100 using a nested loop.
+2. **Question:** Write a program that calculates the sum of the digits of a given number using a `while` loop.
+3. **Question:** Write a program that generates a multiplication table for numbers from 1 to 10 using nested loops.
+4. **Question:** Write a program that finds the greatest common divisor (GCD) of two numbers using a loop.
+5. **Question:** Write a program that prints a diamond pattern of stars using nested loops.
+6. **Question:** Write a program to find the longest sequence of consecutive 1s in a binary number using a loop.
+7. **Question:** Write a program that counts the frequency of each digit in a given number using a loop.
+8. **Question:** Write a program that generates the first `n` triangular numbers using a loop.
+9. **Question:** Write a program that checks if a given string is a palindrome using a loop.
+10. **Question:** Write a program to find the intersection of two arrays using nested loops.
+11. **Question:** Write a program to print all combinations of two digits using nested loops.
+12. **Question:** Write a program to generate all permutations of a string using recursion and loops.
+13. **Question:** Write a program that finds all perfect numbers between 1 and 1000 using a loop.
+14. **Question:** Write a program to print the first `n` terms of the arithmetic progression using a loop.
+15. **Question:** Write a program to sort an array in ascending order using the bubble sort algorithm with loops.
+16. **Question:** Write a program that simulates the game of "Rock, Paper, Scissors" using loops.
+17. **Question:** Write a program that finds the sum of the first `n` prime numbers using a loop.
+18. **Question:** Write a program that checks if a number is an Armstrong number using a loop.
+19. **Question:** Write a program that finds the second largest number in an array using a loop.
+20. **Question:** Write a program to find the sum of the series 1 + 1/2 + 1/3 + ... + 1/n using a loop.
+
+---
+
+### Answers with Explanations
+
+#### Basic Level Answers:
+
+1. **Answer:** 
+   ```cpp
+   for (int i = 1; i <= 10; i++) {
+       cout << i << " ";
+   }
+   ```
+   *Explanation:* This loop iterates from 1 to 10, printing each number.
+
+2. **Answer:**
+   ```cpp
+   int sum = 0, i = 1;
+   while (i <= 100) {
+       sum += i;
+       i++;
+   }
+   cout << "Sum: " << sum;
+   ```
+   *Explanation:* This loop sums numbers from 1 to 100 using a `while` loop.
+
+3. **Answer:**
+   ```cpp
+   int i = 2;
+   do {
+       cout << i << " ";
+       i += 2;
+   } while (i <= 20);
+   ```
+   *Explanation:* This loop starts at 2 and prints even numbers up to 20.
+
+4. **Answer:**
+   ```cpp
+   int n, factorial = 1;
+   cout << "Enter a number: ";
+   cin >> n;
+   for (int i = 1; i <= n; i++) {
+       factorial *= i;
+   }
+   cout << "Factorial: " << factorial;
+   ```
+   *Explanation:* This loop calculates the factorial of a number.
+
+5. **Answer:**
+   ```cpp
+   int num;
+   cout << "Enter a number: ";
+   cin >> num;
+   for (int i = 1; i <= 10; i++) {
+       cout << num * i << " ";
+   }
+   ```
+   *Explanation:* This loop prints the multiplication table of the input number.
+
+6. **Answer:**
+   ```cpp
+   for (int i = 1; i <= 10; i++) {
+       cout << i * i << " ";
+   }
+   ```
+   *Explanation:* This loop prints squares of numbers from 1 to 10.
+
+7. **Answer:**
+   ```cpp
+   int i = 1;
+   while (i <= 20) {
+       if (i % 2 != 0) cout << i << " ";
+       i++;
+   }
+   ```
+   *Explanation:* This loop prints odd numbers from 1 to 20.
+
+8. **Answer:**
+   ```cpp
+   for (int i = 10; i >= 1; i--) {
+       cout << i << " ";
+   }
+   ```
+   *Explanation:* This loop prints numbers from 10 down to 1.
+
+9. **Answer:**
+   ```cpp
+   int n;
+   cout << "Enter a number: ";
+   cin >> n;
+   for (int i = 0; i < n; i++) {
+       cout << "Hello" << endl;
+   }
+   ```
+   *Explanation:* This loop prints "Hello" n times based on user input.
+
+10. **Answer:**
+    ```cpp
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    int count = n;
+    while (count > 0) {
+        cout << count << " ";
+        count--;
+    }
+    ```
+    *Explanation:* This loop counts down from the given number to 1.
+
+---
+
+#### Medium Level Answers:
+
+1. **Answer:**
+   ```cpp
+   int n, reversed = 0;
+   cout << "Enter a number: ";
+   cin >> n;
+   while (n > 0) {
+       reversed = reversed * 10 + n % 10;
+       n /= 10;
+   }
+   cout << "Reversed: " << reversed;
+   ```
+   *Explanation:* This loop reverses the digits of the number.
+
+2. **Answer:**
+   ```cpp
+   int n, a = 0, b = 1, c;
+   cout << "Enter number of terms: ";
+   cin >> n;
+   for (int i = 1; i <= n; i++) {
+       cout << a << " ";
+       c = a + b;
+       a = b;
+       b = c;
+   }
+   ```
+   *Explanation:* This loop generates Fibonacci series terms.
+
+3. **Answer:**
+   ```cpp
+   int n, count = 0;
+   cout << "Enter a number: ";
+   cin >> n;
+   do {
+       count++;
+       n /= 10;
+   } while (n > 0);
+   cout << "Digits: " << count;
+   ```
+   *Explanation:* This loop counts the digits in the number.
+
+4. **Answer:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, isPrime = 1;
+
+    // Input a number
+    cout << "Enter a number: ";
+    cin >> n;
+
+    // Check if the number is less than or equal to 1
+    if (n <= 1) isPrime = 0;
+
+    // Loop from 2 to n / 2 to check for factors
+    for (int i = 2; i <= n / 2; i++) {
+        if (n % i == 0) {
+            isPrime = 0;  // Set isPrime to 0 if a factor is found
+            break;        // Exit the loop as we found a factor
+        }
+    }
+
+    // Output whether the number is prime or not
+    if (isPrime == 1)
+        cout << n << " is a prime number." << endl;
+    else
+        cout << n << " is not a prime number." << endl;
+
+    return 0;
+}
+```
+
+### Explanation:
+1. **Input:** The user enters a number `n`.
+2. **Prime check logic:**
+   - If `n <= 1`, it's not prime (`isPrime = 0`).
+   - For numbers greater than 1, a loop runs from `2` to `n / 2`, checking if `n` is divisible by any number in this range.
+   - If a divisor is found, `isPrime` is set to `0` and the loop breaks.
+3. **Output:** Based on the value of `isPrime`, the program outputs whether `n` is a prime number or not.
+
+Certainly! Here are the remaining answers and explanations for the medium and hard-level questions.
+
+---
+
+#### Medium Level Answers (continued):
+
+5. **Answer:**
+   ```cpp
+   int rows;
+   cout << "Enter number of rows: ";
+   cin >> rows;
+   for (int i = 1; i <= rows; i++) {
+       for (int j = 1; j <= i; j++) {
+           cout << "* ";
+       }
+       cout << endl;
+   }
+   ```
+   *Explanation:* This nested loop prints a pyramid pattern of stars. The outer loop handles the rows, and the inner loop prints the stars in each row.
+
+6. **Answer:**
+   ```cpp
+   int n, sum = 0;
+   cout << "Enter a number: ";
+   cin >> n;
+   for (int i = 1; i <= n; i++) {
+       sum += (2 * i - 1); // Sum of first n odd numbers
+   }
+   cout << "Sum of first " << n << " odd numbers: " << sum;
+   ```
+   *Explanation:* This loop calculates the sum of the first `n` odd numbers.
+
+7. **Answer:**
+   ```cpp
+   int i = 3;
+   while (i <= 100) {
+       cout << i << " ";
+       i += 3; // Increment by 3 to get multiples of 3
+   }
+   ```
+   *Explanation:* This loop prints all multiples of 3 from 1 to 100.
+
+8. **Answer:**
+   ```cpp
+   int arr[] = {1, 2, 3, 4, 5};
+   int sum = 0;
+   for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++) {
+       sum += arr[i];
+   }
+   cout << "Sum of array elements: " << sum;
+   ```
+   *Explanation:* This loop sums all elements of the array.
+
+9. **Answer:**
+   ```cpp
+   int arr[] = {3, 1, 4, 1, 5, 9, 2};
+   int max = arr[0];
+   for (int i = 1; i < sizeof(arr)/sizeof(arr[0]); i++) {
+       if (arr[i] > max) {
+           max = arr[i];
+       }
+   }
+   cout << "Maximum number: " << max;
+   ```
+   *Explanation:* This loop finds the maximum number in an array.
+
+10. **Answer:**
+    ```cpp
+    int rows;
+    cout << "Enter number of rows: ";
+    cin >> rows;
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= i; j++) {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+    ```
+    *Explanation:* This nested loop prints a triangle of numbers, where each row contains increasing numbers.
+
+---
+
+#### Hard Level Answers:
+
+1. **Answer:**
+   ```cpp
+   cout << "Prime numbers between 1 and 100: ";
+   for (int num = 2; num <= 100; num++) {
+       bool isPrime = true;
+       for (int i = 2; i <= num / 2; i++) {
+           if (num % i == 0) {
+               isPrime = false;
+               break;
+           }
+       }
+       if (isPrime) {
+           cout << num << " ";
+       }
+   }
+   ```
+   *Explanation:* This nested loop checks and prints all prime numbers between 1 and 100.
+
+2. **Answer:**
+   ```cpp
+   int n, sum = 0;
+   cout << "Enter a number: ";
+   cin >> n;
+   while (n > 0) {
+       sum += n % 10;
+       n /= 10;
+   }
+   cout << "Sum of digits: " << sum;
+   ```
+   *Explanation:* This loop calculates the sum of the digits of a given number.
+
+3. **Answer:**
+   ```cpp
+   for (int i = 1; i <= 10; i++) {
+       for (int j = 1; j <= 10; j++) {
+           cout << i * j << "\t"; // Print multiplication table
+       }
+       cout << endl;
+   }
+   ```
+   *Explanation:* This nested loop generates multiplication tables for numbers from 1 to 10.
+
+4. **Answer:**
+   ```cpp
+   int a, b;
+   cout << "Enter two numbers: ";
+   cin >> a >> b;
+   while (b != 0) {
+       int t = b;
+       b = a % b;
+       a = t;
+   }
+   cout << "GCD: " << a;
+   ```
+   *Explanation:* This loop uses the Euclidean algorithm to find the GCD of two numbers.
+
+5. **Answer:**
+   ```cpp
+   int n;
+   cout << "Enter number of rows: ";
+   cin >> n;
+   for (int i = 1; i <= n; i++) {
+       for (int j = 1; j <= n - i; j++) {
+           cout << " ";
+       }
+       for (int j = 1; j <= 2 * i - 1; j++) {
+           cout << "*";
+       }
+       cout << endl;
+   }
+   ```
+   *Explanation:* This nested loop prints a diamond pattern of stars.
+
+6. **Answer:**
+   ```cpp
+   int n, count = 0, maxCount = 0;
+   cout << "Enter a binary number: ";
+   cin >> n;
+   while (n > 0) {
+       if (n % 2 == 1) {
+           count++;
+           maxCount = max(maxCount, count);
+       } else {
+           count = 0;
+       }
+       n /= 10;
+   }
+   cout << "Longest sequence of 1s: " << maxCount;
+   ```
+   *Explanation:* This loop finds the longest sequence of consecutive 1s in a binary number.
+
+7. **Answer:**
+   ```cpp
+   int n;
+   cout << "Enter a number: ";
+   cin >> n;
+   int freq[10] = {0}; // Array to store frequency of digits
+   while (n > 0) {
+       freq[n % 10]++;
+       n /= 10;
+   }
+   for (int i = 0; i < 10; i++) {
+       if (freq[i] > 0) {
+           cout << i << ": " << freq[i] << endl; // Print frequency
+       }
+   }
+   ```
+   *Explanation:* This loop counts the frequency of each digit in the given number.
+
+8. **Answer:**
+   ```cpp
+   int n;
+   cout << "Enter number of triangular numbers to generate: ";
+   cin >> n;
+   for (int i = 1; i <= n; i++) {
+       cout << (i * (i + 1)) / 2 << " "; // n-th triangular number
+   }
+   ```
+   *Explanation:* This loop generates the first `n` triangular numbers.
+
+9. **Answer:**
+   ```cpp
+   string str;
+   cout << "Enter a string: ";
+   cin >> str;
+   bool isPalindrome = true;
+   for (int i = 0; i < str.length() / 2; i++) {
+       if (str[i] != str[str.length() - 1 - i]) {
+           isPalindrome = false;
+           break;
+       }
+   }
+   cout << (isPalindrome ? "Palindrome" : "Not a palindrome");
+   ```
+   *Explanation:* This loop checks if a given string is a palindrome.
+
+10. **Answer:**
+    ```cpp
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {3, 4, 5, 6, 7};
+    cout << "Intersection: ";
+    for (int i = 0; i < sizeof(arr1)/sizeof(arr1[0]); i++) {
+        for (int j = 0; j < sizeof(arr2)/sizeof(arr2[0]); j++) {
+            if (arr1[i] == arr2[j]) {
+                cout << arr1[i] << " ";
+            }
+        }
+    }
+    ```
+    *Explanation:* This nested loop finds and prints the intersection of two arrays.
+
+11. **Answer:**
+    ```cpp
+    for (int i = 0; i <= 9; i++) {
+        for (int j = 0; j <= 9; j++) {
+            cout << i << j << endl; // Print combinations of two digits
+        }
+    }
+    ```
+    *Explanation:* This nested loop generates and prints all combinations of two digits.
+
+12. **Answer:** *(This program is complex and often requires recursion. Here’s a simplified explanation.)*
+    ```cpp
+    void permute(string str, int l, int r) {
+        if (l == r) cout << str << endl;
+        else {
+            for (int i = l; i <= r; i++) {
+                swap(str[l], str[i]);
+                permute(str, l + 1, r);
+                swap(str[l], str[i]); // backtrack
+            }
+        }
+    }
+    ```
+    *Explanation:* This recursive function generates permutations of a string.
+
+13. **Answer:**
+    ```cpp
+    cout << "Perfect numbers between 1 and 1000: ";
+    for (int num = 1; num <= 1000; num++) {
+        int sum = 0;
+
+
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        if (sum == num) {
+            cout << num << " ";
+        }
+    }
+    ```
+    *Explanation:* This nested loop finds and prints perfect numbers between 1 and 1000.
+
+14. **Answer:**
+    ```cpp
+    int n, a, d;
+    cout << "Enter first term, common difference, and number of terms: ";
+    cin >> a >> d >> n;
+    for (int i = 0; i < n; i++) {
+        cout << a + i * d << " "; // Print each term
+    }
+    ```
+    *Explanation:* This loop prints the first `n` terms of the arithmetic progression.
+
+15. **Answer:**
+    ```cpp
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                swap(arr[j], arr[j+1]);
+            }
+        }
+    }
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    ```
+    *Explanation:* This nested loop implements the bubble sort algorithm to sort an array.
+
+16. **Answer:**
+    ```cpp
+    string choices[] = {"Rock", "Paper", "Scissors"};
+    int userChoice, computerChoice;
+    cout << "Enter 0 for Rock, 1 for Paper, 2 for Scissors: ";
+    cin >> userChoice;
+    computerChoice = rand() % 3; // Random choice for computer
+    cout << "Computer chose: " << choices[computerChoice] << endl;
+    if (userChoice == computerChoice) cout << "It's a draw!";
+    else if ((userChoice + 1) % 3 == computerChoice) cout << "You lose!";
+    else cout << "You win!";
+    ```
+    *Explanation:* This program simulates a game of "Rock, Paper, Scissors" using loops and random number generation.
+
+17. **Answer:**
+    ```cpp
+    int n, count = 0, primeCount = 0, num = 2;
+    cout << "Enter how many prime numbers to find: ";
+    cin >> n;
+    while (primeCount < n) {
+        bool isPrime = true;
+        for (int i = 2; i <= sqrt(num); i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            cout << num << " ";
+            primeCount++;
+        }
+        num++;
+    }
+    ```
+    *Explanation:* This loop finds and prints the first `n` prime numbers.
+
+18. **Answer:**
+    ```cpp
+    int n, sum = 0, temp;
+    cout << "Enter a number: ";
+    cin >> n;
+    temp = n;
+    while (temp > 0) {
+        int digit = temp % 10;
+        sum += digit * digit * digit; // Cubing each digit
+        temp /= 10;
+    }
+    cout << (sum == n ? "Armstrong number" : "Not an Armstrong number");
+    ```
+    *Explanation:* This loop checks if a number is an Armstrong number.
+
+19. **Answer:**
+    ```cpp
+    int arr[] = {3, 1, 4, 1, 5, 9};
+    int max1 = INT_MIN, max2 = INT_MIN;
+    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++) {
+        if (arr[i] > max1) {
+            max2 = max1;
+            max1 = arr[i];
+        } else if (arr[i] > max2 && arr[i] != max1) {
+            max2 = arr[i];
+        }
+    }
+    cout << "Second largest number: " << max2;
+    ```
+    *Explanation:* This loop finds the second largest number in an array.
+
+20. **Answer:**
+    ```cpp
+    int n, sum = 0;
+    cout << "Enter number of terms: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        sum += 1 / i; // Sum of the series
+    }
+    cout << "Sum of the series: " << sum;
+    ```
+    *Explanation:* This loop calculates the sum of the series \(1 + \frac{1}{2} + \frac{1}{3} + ... + \frac{1}{n}\).
+
+---
+
 
