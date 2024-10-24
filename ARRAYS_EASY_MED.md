@@ -124,17 +124,36 @@ Here’s a comprehensive list of coding questions on the topic of arrays categor
    *Explanation:* This loop copies elements from one array to another.
 
 8. **Answer:**
-   ```cpp
-   int arr[] = {3, 5, 1, 2, 4};
-   int max = INT_MIN, secondMax = INT_MIN;
-   for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++) {
-       if (arr[i] > max) {
-           secondMax = max;
-           max = arr[i];
-       } else if (arr[i] > secondMax && arr[i] != max) {
-           secondMax = arr[i];
-       }
-   }
+```cpp
+  // Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+#include <limits.h>
+using namespace std;
+int main() {
+    int n;
+     cin>>n;
+   vector<int>arr(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int l=INT_MIN,s=INT_MIN;
+    for(int i=0;i<arr.size();i++)
+    {
+        if(arr[i]>l)
+        {
+            s=l;
+            l=arr[i];
+        }
+        else if(arr[i]>s && arr[i]!=l)
+        {
+            s=arr[i];
+        }
+    }
+    cout<<s;
+    // return 0;
+}
    ```
    *Explanation:* This loop tracks the largest and second-largest values by comparing each element.
 
@@ -151,18 +170,40 @@ Here’s a comprehensive list of coding questions on the topic of arrays categor
    *Explanation:* This loop rotates the array by moving elements one position to the right.
 
 10. **Answer:**
-    ```cpp
-    int arr[] = {1, 2, 2, 3, 3, 3};
-    int freq[100] = {0}; // Assuming values are less than 100
-    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++) {
-        freq[arr[i]]++;
+```cpp
+   #include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+
+    int arr[n]; // Array to store the user input
+    cout << "Enter the elements of the array (values should be less than 100): ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
+
+    // Frequency array initialized to 0, assuming elements are less than 100
+    int freq[100] = {0};
+
+    // Calculating the frequency of each element
+    for (int i = 0; i < n; i++) {
+        freq[arr[i]]++; // Increment frequency of the element arr[i]
+    }
+
+    // Printing the frequency of each unique element
+    cout << "Element frequencies:" << endl;
     for (int i = 0; i < 100; i++) {
         if (freq[i] > 0) {
-            cout << i << ": " << freq[i] << endl; // Print frequency
+            cout << i << ": " << freq[i] << endl;
         }
     }
-    ```
+
+    return 0;
+}
+```
     *Explanation:* This loop counts the frequency of each element and prints it.
 
 11. **Answer:**
@@ -214,15 +255,15 @@ Here’s a comprehensive list of coding questions on the topic of arrays categor
     int arr2[] = {2, 3, 4};
     int intersection[3], index = 0;
     for (int i = 0; i < sizeof(arr1)/sizeof(arr1[0]); i++) {
-        for (int
-
- j = 0; j < sizeof(arr2)/sizeof(arr2[0]); j++) {
+        for (int j = 0; j < sizeof(arr2)/sizeof(arr2[0]); j++) {
             if (arr1[i] == arr2[j]) {
                 intersection[index++] = arr1[i]; // Store intersection
                 break;
             }
         }
     }
+
+ 
     ```
     *Explanation:* This nested loop finds the common elements between two arrays.
 
