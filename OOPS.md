@@ -290,3 +290,215 @@ Object-Oriented Programming (OOP) is a programming paradigm based on the concept
    ```
 
 By understanding and implementing these concepts, you can leverage the full power of OOP in C++.
+
+Here's a comprehensive example of C++ code that demonstrates the key concepts of Object-Oriented Programming (OOP), including classes, objects, inheritance, polymorphism, encapsulation, and more. We'll build a simple system for managing a library.
+
+### Code Example
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Base class
+class Book {
+protected:
+    string title;
+    string author;
+    int id;
+
+public:
+    Book(string t, string a, int i) : title(t), author(a), id(i) {}
+
+    virtual void display() {
+        cout << "Book ID: " << id << ", Title: " << title << ", Author: " << author << endl;
+    }
+
+    virtual ~Book() {}
+};
+
+// Derived class
+class Fiction : public Book {
+private:
+    string genre;
+
+public:
+    Fiction(string t, string a, int i, string g) : Book(t, a, i), genre(g) {}
+
+    void display() override {
+        cout << "Fiction Book - ID: " << id << ", Title: " << title << ", Author: " << author << ", Genre: " << genre << endl;
+    }
+};
+
+class NonFiction : public Book {
+private:
+    string subject;
+
+public:
+    NonFiction(string t, string a, int i, string s) : Book(t, a, i), subject(s) {}
+
+    void display() override {
+        cout << "Non-Fiction Book - ID: " << id << ", Title: " << title << ", Author: " << author << ", Subject: " << subject << endl;
+    }
+};
+
+// Library class to manage books
+class Library {
+private:
+    vector<Book*> books;
+
+public:
+    void addBook(Book* book) {
+        books.push_back(book);
+    }
+
+    void displayBooks() {
+        for (Book* book : books) {
+            book->display();
+        }
+    }
+
+    ~Library() {
+        for (Book* book : books) {
+            delete book;
+        }
+    }
+};
+
+int main() {
+    Library lib;
+
+    Book* book1 = new Fiction("The Great Gatsby", "F. Scott Fitzgerald", 1, "Drama");
+    Book* book2 = new NonFiction("Sapiens", "Yuval Noah Harari", 2, "History");
+
+    lib.addBook(book1);
+    lib.addBook(book2);
+
+    lib.displayBooks();
+
+    return 0;
+}
+```
+
+### Explanation
+
+Let's break down the code line by line to understand the key OOP concepts in C++.
+
+1. **Include necessary headers:**
+   ```cpp
+   #include <iostream>
+   #include <vector>
+   #include <string>
+   ```
+   These lines include the standard input/output stream, vector, and string libraries.
+
+2. **Using the `std` namespace:**
+   ```cpp
+   using namespace std;
+   ```
+   This line allows us to use names from the standard library without prefixing them with `std::`.
+
+3. **Base class `Book`:**
+   ```cpp
+   class Book {
+   protected:
+       string title;
+       string author;
+       int id;
+   public:
+       Book(string t, string a, int i) : title(t), author(a), id(i) {}
+       virtual void display() {
+           cout << "Book ID: " << id << ", Title: " << title << ", Author: " << author << endl;
+       }
+       virtual ~Book() {}
+   };
+   ```
+   - **Class Declaration:** `class Book { ... };` declares the `Book` class.
+   - **Protected Members:** `protected:` ensures that derived classes can access these members.
+   - **Constructor:** `Book(string t, string a, int i)` initializes the `title`, `author`, and `id` members.
+   - **Virtual Function:** `virtual void display()` is a virtual function that can be overridden by derived classes.
+   - **Destructor:** `virtual ~Book()` is a virtual destructor to ensure proper cleanup of derived class objects.
+
+4. **Derived class `Fiction`:**
+   ```cpp
+   class Fiction : public Book {
+   private:
+       string genre;
+   public:
+       Fiction(string t, string a, int i, string g) : Book(t, a, i), genre(g) {}
+       void display() override {
+           cout << "Fiction Book - ID: " << id << ", Title: " << title << ", Author: " << author << ", Genre: " << genre << endl;
+       }
+   };
+   ```
+   - **Inheritance:** `class Fiction : public Book { ... };` indicates that `Fiction` inherits from `Book`.
+   - **Constructor:** `Fiction(string t, string a, int i, string g)` initializes the base class and adds the `genre` member.
+   - **Overridden Function:** `void display() override` provides a specific implementation for `Fiction` books.
+
+5. **Derived class `NonFiction`:**
+   ```cpp
+   class NonFiction : public Book {
+   private:
+       string subject;
+   public:
+       NonFiction(string t, string a, int i, string s) : Book(t, a, i), subject(s) {}
+       void display() override {
+           cout << "Non-Fiction Book - ID: " << id << ", Title: " << title << ", Author: " << author << ", Subject: " << subject << endl;
+       }
+   };
+   ```
+   - **Inheritance:** `class NonFiction : public Book { ... };` indicates that `NonFiction` inherits from `Book`.
+   - **Constructor:** `NonFiction(string t, string a, int i, string s)` initializes the base class and adds the `subject` member.
+   - **Overridden Function:** `void display() override` provides a specific implementation for `NonFiction` books.
+
+6. **Library class:**
+   ```cpp
+   class Library {
+   private:
+       vector<Book*> books;
+   public:
+       void addBook(Book* book) {
+           books.push_back(book);
+       }
+       void displayBooks() {
+           for (Book* book : books) {
+               book->display();
+           }
+       }
+       ~Library() {
+           for (Book* book : books) {
+               delete book;
+           }
+       }
+   };
+   ```
+   - **Private Members:** `vector<Book*> books;` stores pointers to `Book` objects.
+   - **Adding Books:** `void addBook(Book* book)` adds a book to the library.
+   - **Displaying Books:** `void displayBooks()` iterates through the books and calls their `display` method.
+   - **Destructor:** `~Library()` deletes all dynamically allocated books to prevent memory leaks.
+
+7. **Main function:**
+   ```cpp
+   int main() {
+       Library lib;
+
+       Book* book1 = new Fiction("The Great Gatsby", "F. Scott Fitzgerald", 1, "Drama");
+       Book* book2 = new NonFiction("Sapiens", "Yuval Noah Harari", 2, "History");
+
+       lib.addBook(book1);
+       lib.addBook(book2);
+
+       lib.displayBooks();
+
+       return 0;
+   }
+   ```
+   - **Library Instance:** `Library lib;` creates an instance of the `Library` class.
+   - **Creating Books:** `new Fiction(...)` and `new NonFiction(...)` create instances of `Fiction` and `NonFiction`.
+   - **Adding Books:** `lib.addBook(book1);` and `lib.addBook(book2);` add books to the library.
+   - **Displaying Books:** `lib.displayBooks();` displays all books in the library.
+   - **Return Statement:** `return 0;` indicates successful program termination.
+
+This example demonstrates how to use OOP concepts in C++ to create a flexible and reusable system for managing a library. It covers class definition, inheritance, polymorphism, encapsulation, and memory management.
