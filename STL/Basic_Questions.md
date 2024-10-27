@@ -101,11 +101,38 @@ Sure, here are solutions or approaches for each of these STL-based questions in 
      }
      ```
    - **Remove Duplicates**:
-     ```cpp
-     std::sort(vec.begin(), vec.end());
-     auto last = std::unique(vec.begin(), vec.end());
-     vec.erase(last, vec.end());
-     ```
+ ```cpp
+         #include <iostream>
+      #include <vector>
+      #include <set>
+      using namespace std;
+
+   int main() {
+       vector<int> vec;
+       set<int> unique;
+       int n;
+
+    // Input the number of elements
+    cin >> n;
+
+
+    // Input elements into the vector
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+
+    // Insert elements from the vector into the set to ensure uniqueness
+    unique.insert(vec.begin(), vec.end());
+
+    // Output the unique sorted elements
+    for (int num : unique) {
+        cout << num << " "; // Adding a space for readability
+    }
+    cout << endl; // New line after output
+
+    return 0;
+}
+```
 
 ### 2. **Set Operations**
    - **Union and Intersection**:
