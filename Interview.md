@@ -97,3 +97,166 @@ int main() {
   - If the bit is `1`, it increments `count`.
   - The `num >>= 1` right-shifts `num` by one position, moving to the next bit.
 - **Output**: After the loop ends, `count` contains the number of set bits in `num`, which is then printed.
+  Here's the Bubble Sort code that takes input from the user:
+
+```cpp
+#include <iostream>
+#include <algorithm> // For std::swap
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                std::swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int n;
+    std::cout << "Enter the number of elements: ";
+    std::cin >> n;
+
+    int arr[n];
+    std::cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+
+    std::cout << "Original array: ";
+    printArray(arr, n);
+
+    bubbleSort(arr, n);
+
+    std::cout << "Sorted array: ";
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+### Explanation of the Changes
+1. **Taking Input for Array Size**: 
+   - The code prompts the user to enter the number of elements, storing it in `n`.
+   
+2. **Taking Input for Array Elements**:
+   - The code prompts the user to enter each element of the array, one by one.
+
+### Example of Input and Output
+#### Input:
+```
+Enter the number of elements: 5
+Enter 5 elements: 64 25 12 22 11
+```
+
+#### Output:
+```
+Original array: 64 25 12 22 11 
+Sorted array: 11 12 22 25 64
+```
+
+This approach allows the user to input any array size and elements to be sorted using Bubble Sort.
+
+Here's the Selection Sort code without using any functions. It directly sorts the array in the `main` function and prints the results.
+
+```cpp
+#include <iostream>
+#include <algorithm> // For std::swap
+
+int main() {
+    int n;
+    std::cout << "Enter the number of elements: ";
+    std::cin >> n;
+
+    int arr[n];
+    std::cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+
+    // Selection Sort
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        std::swap(arr[minIndex], arr[i]);
+    }
+
+    // Print sorted array
+    std::cout << "Sorted array: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+```
+
+### Explanation of the Code
+
+1. **Input Section**:
+   - The program prompts the user to enter the number of elements and the elements themselves.
+
+2. **Selection Sort Implementation**:
+   - The outer loop iterates through the array to find the minimum element for each position.
+   - The inner loop finds the smallest element in the unsorted portion of the array.
+   - The `std::swap` function is used to place the smallest element at the start of the unsorted portion.
+
+3. **Printing the Sorted Array**:
+   - After sorting, the sorted array is printed in ascending order.
+
+### Example of Input and Output
+#### Input:
+```
+Enter the number of elements: 5
+Enter 5 elements: 29 10 14 37 13
+```
+
+#### Output:
+```
+Sorted array: 10 13 14 29 37
+```
+
+This code demonstrates Selection Sort directly in `main`, without the use of separate functions.
+```cpp
+#include <iostream>
+
+bool isPrimeDigit(int digit) {
+    // Check if the digit is one of the prime digits: 2, 3, 5, or 7
+    return (digit == 2 || digit == 3 || digit == 5 || digit == 7);
+}
+
+int main() {
+    int number;
+    std::cout << "Enter a number: ";
+    std::cin >> number;
+
+    int primeDigitCount = 0;
+    int temp = number;
+
+    // Check each digit
+    while (temp > 0) {
+        int digit = temp % 10; // Extract the last digit
+        if (isPrimeDigit(digit)) {
+            primeDigitCount++;
+        }
+        temp /= 10; // Remove the last digit
+    }
+
+    std::cout << "Number of prime digits in " << number << ": " << primeDigitCount << std::endl;
+
+    return 0;
+}
+```
