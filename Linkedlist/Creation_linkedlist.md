@@ -56,6 +56,7 @@ int main() {
 **convert array to linkedlist**
 ```cpp
 // Online C++ compiler to run C++ program online
+// Online C++ compiler to run C++ program online
 #include <iostream>
  #include<vector>
 using namespace std;
@@ -86,9 +87,25 @@ Node* convertarr2ll(vector<int>&arr)
    }
    return head;
 }
+int lengthofll(Node* head)
+{
+    int cnt=0;
+    Node* temp=head;
+    while(temp)
+    {
+        //to print the elements in ll
+        // cout<<temp->data<<" ";
+        temp=temp->next;
+        cnt++;
+    }
+    return cnt;
+}
 int main() {
     vector<int> arr = {21, 5, 8, 7};
     Node* head=convertarr2ll(arr);
-    cout << head->data<< '\n';
+    //prints head
+    // cout << head->data<< '\n';
+    //printing complete linkedlist
+    cout<<lengthofll(head);
 }
 ```
