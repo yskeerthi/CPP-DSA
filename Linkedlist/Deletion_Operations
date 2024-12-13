@@ -116,7 +116,36 @@ Node* deleteK(Node* head, int k) {
     cout << "Node at position " << k << " deleted successfully." << endl;
     return head;
 }
-
+//function to remove a element in the linkedlist
+Node* deleteel(Node* head,int el)
+{
+    if(head==NULL)
+    {
+        return NULL;
+    }
+    if(head->data==el)
+    {
+        Node* temp=head;
+        head=head->next;
+       delete temp;
+        return head;
+    }
+    Node* temp=head;
+    Node* prev=NULL;
+    while(temp!=NULL)
+    {
+        if(temp->data==el)
+        {
+           prev->next=prev->next->next; 
+          delete temp;
+           break;
+        }
+       prev=temp;
+       temp=temp->next;
+        
+    }
+    return head;
+}
 // Function to print the linked list
 void print(Node* head) {
     if (head == NULL) {
@@ -155,6 +184,12 @@ int main() {
     cout << "Deleting the tail node:" << endl;
     head = deletetail(head);
     print(head);
-
+    
+    //Deleting thevalue in linked list
+    int el;
+    cin>>el;
+    cout << "Deleting the node at position " << el << ":" << endl;
+    head = deleteel(head, el);
+    print(head);
     return 0;
 }
