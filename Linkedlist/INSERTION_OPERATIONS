@@ -1,0 +1,135 @@
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data1, Node* next1 = nullptr) {
+        data = data1;
+        next = next1;
+    }
+};
+
+// Convert an array to a linked list
+Node* convertarrtoll(vector<int> arr) {
+    if (arr.empty()) return nullptr;
+
+    Node* head = new Node(arr[0]);
+    Node* mover = head;
+    for (int i = 1; i < arr.size(); i++) {
+        Node* temp = new Node(arr[i]);
+        mover->next = temp;
+        mover = temp;
+    }
+    return head;
+}
+Node* insertAtHead(Node* head,int val)
+{
+    Node* temp=new Node(val,head);
+    return temp;
+}
+Node* insertAtTail(Node* head,int val)
+{
+    if(head==NULL)
+    {
+        return new Node(val);
+    }
+    Node* temp=head;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    Node* newNode=new Node(val);
+    temp->next=newNode;
+    return head;
+}
+Node* insertAtPosition(Node* head,int e,int k)
+{
+    if(head==NULL)
+    {
+        if(k==1)
+        return new Node(e);
+        else{
+            return head;
+        }
+    }
+    if(k==1)
+    {
+        return new Node(e,head);
+    }
+    int c=0;
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        c++;
+        if(c==k-1)
+        {
+            Node* x=new Node(e,temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+Node* insertvalue(Node* head,int e,int k)
+{
+    if(head==NULL)
+    {
+           return NULL;
+    }
+    if(head->data==e)
+    {
+        return new Node(e,head);
+    }
+    Node* temp=head;
+    while(temp->next!=NULL)
+    {
+        if(temp->next->data==e)
+        {
+            Node* x=new Node(e,temp->next);
+            temp->next=x;
+            break;
+        }
+        temp=temp->next;
+    }
+    return head;
+}
+// Print the entire linked list
+void printLinkedList(Node* head) {
+    if (!head) {
+        cout << "The linked list is empty!" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    vector<int> arr = {3, 2, 7, 9, 4, 6};
+
+    // Convert array to linked list
+    Node* head = convertarrtoll(arr);
+
+    // Print original linked list
+    cout << "Original linked list:" << endl;
+    printLinkedList(head);
+     head=insertAtHead(head,100);
+   printLinkedList(head);
+    head=insertAtTail(head,12);
+   printLinkedList(head);
+    head=insertAtPosition(head,1,4);
+    printLinkedList(head);
+     head=insertvalue(head,3,2);
+    printLinkedList(head);
+    return 0;
+}
