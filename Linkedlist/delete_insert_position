@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+
+void insertAtPosition(Node*& head, int position, int value) {
+    Node* newNode = new Node(value);
+    if (position == 1) {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+    Node* temp = head;
+    int count = 1;
+    while (temp != NULL ) {
+        temp = temp->next;
+        count++;
+    }
+    if (temp !=NULL) {
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+}
+
+void Deletehead(Node*& head)
+{
+    head=head->next;
+}
+void Deletetail(Node*& head) {
+    Node* temp = head;
+    while (temp->next->next!= NULL) {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+}
+
+void printList(Node* head) {
+    Node* temp = head;
+    while (temp !=NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(3);
+    head->next->next->next = new Node(4);
+    int k = 4, value = 12;
+    insertAtPosition(head, k, value);
+     cout<<"After deleting the head :";
+    Deletehead(head);
+    printList(head);
+    cout<<"After deleting the tail:";
+    Deletetail(head);
+    printList(head);
+    return 0;
+}
