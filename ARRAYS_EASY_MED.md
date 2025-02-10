@@ -232,10 +232,224 @@ int main() {
 - **Sorting complexity varies** → Bubble Sort **O(n²)**, Quick Sort **O(n log n)**.  
 - **Binary Search only works on sorted arrays**.  
 - **Linear Search works on any array** but is slower **O(n)**.  
+Now, let's **level up** 🚀 and move to **intermediate** and **advanced** array problems with **efficient algorithms** like **Kadane's Algorithm, Two-Pointer Technique, Sliding Window, and Prefix Sum**.  
 
-Would you like **more advanced** problems like **Kadane’s Algorithm, Two Pointer, Sliding Window**? 🚀🔥
-Here’s a comprehensive list of coding questions on the topic of arrays categorized by level (basic, medium, and hard). Each section includes 20 questions, and the answers with explanations will follow each level.
+---
 
+## **📌 6. Kadane’s Algorithm (Maximum Subarray Sum)**
+🔹 **Problem**: Find the **maximum sum of a contiguous subarray** (Largest Sum Subarray).  
+🔹 **Complexity**: **O(n)**  
+🔹 **Use Case**: Stock trading profits, temperature changes analysis.  
+
+### **👉 Brute Force Approach (O(n²))**
+```cpp
+#include <iostream>
+using namespace std;
+
+int maxSubarraySumBruteForce(int arr[], int n) {
+    int maxSum = arr[0];
+    
+    // Try every subarray
+    for (int i = 0; i < n; i++) {
+        int sum = 0;
+        for (int j = i; j < n; j++) {
+            sum += arr[j];
+            maxSum = max(maxSum, sum);
+        }
+    }
+    return maxSum;
+}
+
+int main() {
+    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Maximum subarray sum (Brute Force): " << maxSubarraySumBruteForce(arr, n) << endl;
+
+    return 0;
+}
+```
+
+---
+
+### **👉 Kadane’s Algorithm (Optimized - O(n))**
+```cpp
+#include <iostream>
+using namespace std;
+
+int kadaneAlgorithm(int arr[], int n) {
+    int maxSum = arr[0];  // Store the maximum sum
+    int currentSum = arr[0];  // Store the current sum
+
+    for (int i = 1; i < n; i++) {
+        currentSum = max(arr[i], currentSum + arr[i]); // Extend subarray or start fresh
+        maxSum = max(maxSum, currentSum);  // Update maxSum if needed
+    }
+
+    return maxSum;
+}
+
+int main() {
+    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Maximum subarray sum (Kadane's Algorithm): " << kadaneAlgorithm(arr, n) << endl;
+
+    return 0;
+}
+```
+
+🔹 **Why is this efficient?**
+- Instead of checking all subarrays, **it keeps track of a running sum**.
+- **If the sum goes negative, we start a new subarray.**
+
+---
+
+## **📌 7. Two-Pointer Technique**
+🔹 **Problem**: Check if a sorted array has two numbers that add up to a target.  
+🔹 **Complexity**: **O(n)**  
+
+### **👉 Two Pointer Approach**
+```cpp
+#include <iostream>
+using namespace std;
+
+bool twoSumSorted(int arr[], int n, int target) {
+    int left = 0, right = n - 1;
+
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+
+        if (sum == target) return true;
+        else if (sum < target) left++;  // Increase sum
+        else right--;  // Decrease sum
+    }
+
+    return false;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 6, 8, 10};  // Sorted array
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target = 10;
+
+    if (twoSumSorted(arr, n, target)) cout << "Pair found!" << endl;
+    else cout << "No pair found!" << endl;
+
+    return 0;
+}
+```
+
+🔹 **Why is this efficient?**
+- Instead of **O(n²) brute force**, it **shrinks** the search space using **two pointers**.
+
+---
+
+## **📌 8. Sliding Window Technique**
+🔹 **Problem**: Find the **maximum sum of any subarray of size k**.  
+🔹 **Complexity**: **O(n)**  
+🔹 **Use Case**: Optimizing for **continuous subarrays**.
+
+### **👉 Brute Force Approach (O(n²))**
+```cpp
+int maxSumBruteForce(int arr[], int n, int k) {
+    int maxSum = 0;
+    for (int i = 0; i <= n - k; i++) {
+        int sum = 0;
+        for (int j = i; j < i + k; j++) {
+            sum += arr[j];
+        }
+        maxSum = max(maxSum, sum);
+    }
+    return maxSum;
+}
+```
+
+---
+
+### **👉 Optimized Sliding Window (O(n))**
+```cpp
+#include <iostream>
+using namespace std;
+
+int maxSumSlidingWindow(int arr[], int n, int k) {
+    int maxSum = 0, windowSum = 0;
+
+    // Compute the sum of the first window
+    for (int i = 0; i < k; i++) {
+        windowSum += arr[i];
+    }
+    maxSum = windowSum;
+
+    // Slide the window across the array
+    for (int i = k; i < n; i++) {
+        windowSum += arr[i] - arr[i - k];  // Add new element, remove old one
+        maxSum = max(maxSum, windowSum);
+    }
+
+    return maxSum;
+}
+
+int main() {
+    int arr[] = {2, 1, 5, 1, 3, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 3;
+
+    cout << "Maximum sum of subarray of size " << k << ": " << maxSumSlidingWindow(arr, n, k) << endl;
+
+    return 0;
+}
+```
+
+🔹 **Why is this efficient?**
+- Instead of recalculating every subarray sum, it **adjusts the sum in O(1) per step**.
+
+---
+
+## **📌 9. Prefix Sum Technique**
+🔹 **Problem**: Find the sum of any subarray **(L, R) in O(1)** after preprocessing.  
+🔹 **Complexity**: **O(n) preprocessing, O(1) queries**.
+
+### **👉 Prefix Sum Algorithm**
+```cpp
+#include <iostream>
+using namespace std;
+
+void computePrefixSum(int arr[], int n, int prefixSum[]) {
+    prefixSum[0] = arr[0]; // First element remains the same
+
+    for (int i = 1; i < n; i++) {
+        prefixSum[i] = prefixSum[i - 1] + arr[i]; // Add previous sum
+    }
+}
+
+// Function to get sum in range [L, R]
+int rangeSum(int prefixSum[], int L, int R) {
+    if (L == 0) return prefixSum[R]; // Sum from 0 to R
+    return prefixSum[R] - prefixSum[L - 1]; // Exclude left part
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int prefixSum[n];
+
+    computePrefixSum(arr, n, prefixSum);
+
+    int L = 1, R = 3; // Query for sum in range [1,3]
+    cout << "Sum of subarray [" << L << ", " << R << "] = " << rangeSum(prefixSum, L, R) << endl;
+
+    return 0;
+}
+```
+
+🔹 **Why is this useful?**
+- Instead of recalculating sum for each query, we **precompute sums** in **O(n)**.
+
+---
+
+
+Do you want to move to **sorting-based** or **advanced problem-solving** next? 🚀🔥
 ## Basic Level Array Questions
 
 1. **Question 1:** Write a program to find the largest element in an array.
