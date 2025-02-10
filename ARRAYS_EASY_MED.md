@@ -1,4 +1,239 @@
+Here’s a **detailed list** of **basic array algorithm questions**, along with **well-commented code** and **time complexities**. 🚀  
 
+---
+
+## **📌 1. Traversal & Basic Operations**
+### **Q1: Print all elements of an array**
+🔹 **Problem**: Given an array, print all elements.  
+🔹 **Complexity**: **O(n)**  
+```cpp
+#include <iostream>
+using namespace std;
+
+void printArray(int arr[], int n) {
+    // Loop through the array
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " "; // Print each element
+    }
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5}; // Sample array
+    int n = sizeof(arr) / sizeof(arr[0]); // Calculate size
+    printArray(arr, n); // Call function
+    return 0;
+}
+```
+
+---
+
+## **📌 2. Find Maximum and Minimum in an Array**
+### **Q2: Find max and min element in an array**
+🔹 **Problem**: Find the largest and smallest number in an array.  
+🔹 **Complexity**: **O(n)**
+```cpp
+#include <iostream>
+using namespace std;
+
+void findMinMax(int arr[], int n) {
+    int minVal = arr[0]; // Assume first element is min
+    int maxVal = arr[0]; // Assume first element is max
+
+    for (int i = 1; i < n; i++) { // Iterate through the array
+        if (arr[i] < minVal) minVal = arr[i]; // Update min
+        if (arr[i] > maxVal) maxVal = arr[i]; // Update max
+    }
+
+    cout << "Minimum: " << minVal << ", Maximum: " << maxVal << endl;
+}
+
+int main() {
+    int arr[] = {3, 1, 5, 7, 2, 8}; // Sample array
+    int n = sizeof(arr) / sizeof(arr[0]); // Size of array
+    findMinMax(arr, n); // Call function
+    return 0;
+}
+```
+
+---
+
+## **📌 3. Reverse an Array**
+### **Q3: Reverse the given array**
+🔹 **Problem**: Reverse an array in **O(n)** time.  
+🔹 **Complexity**: **O(n)**
+```cpp
+#include <iostream>
+using namespace std;
+
+void reverseArray(int arr[], int n) {
+    int left = 0, right = n - 1; // Two-pointer approach
+    while (left < right) {
+        swap(arr[left], arr[right]); // Swap elements
+        left++;
+        right--;
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    reverseArray(arr, n);
+    printArray(arr, n); // Output: 5 4 3 2 1
+
+    return 0;
+}
+```
+
+---
+
+## **📌 4. Searching Algorithms**
+### **Q4: Linear Search**
+🔹 **Problem**: Find an element in an unsorted array.  
+🔹 **Complexity**: **O(n)**
+```cpp
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) return i; // Found the element
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key = 30;
+
+    int index = linearSearch(arr, n, key);
+    if (index != -1)
+        cout << "Element found at index: " << index << endl;
+    else
+        cout << "Element not found" << endl;
+
+    return 0;
+}
+```
+
+---
+
+### **Q5: Binary Search (For Sorted Arrays)**
+🔹 **Problem**: Find an element in a **sorted** array.  
+🔹 **Complexity**: **O(log n)**
+```cpp
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int left, int right, int key) {
+    while (left <= right) {
+        int mid = left + (right - left) / 2; // Middle index
+
+        if (arr[mid] == key) return mid; // Found
+        if (arr[mid] < key) left = mid + 1; // Search right half
+        else right = mid - 1; // Search left half
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50}; // Sorted array
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int key = 30;
+
+    int index = binarySearch(arr, 0, n - 1, key);
+    if (index != -1)
+        cout << "Element found at index: " << index << endl;
+    else
+        cout << "Element not found" << endl;
+
+    return 0;
+}
+```
+
+---
+
+## **📌 5. Sorting Algorithms**
+### **Q6: Bubble Sort**
+🔹 **Problem**: Sort an array using Bubble Sort.  
+🔹 **Complexity**: **O(n²)**
+```cpp
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) { // Outer loop
+        for (int j = 0; j < n - i - 1; j++) { // Inner loop
+            if (arr[j] > arr[j + 1]) { // Swap if needed
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, n);
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+---
+
+### **Q7: Selection Sort**
+🔹 **Problem**: Sort an array using Selection Sort.  
+🔹 **Complexity**: **O(n²)**
+```cpp
+#include <iostream>
+using namespace std;
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i; // Assume min is at i
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) minIndex = j; // Update minIndex
+        }
+        swap(arr[i], arr[minIndex]); // Swap min element with first
+    }
+}
+
+int main() {
+    int arr[] = {29, 10, 14, 37, 13};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    selectionSort(arr, n);
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+
+    return 0;
+}
+```
+
+---
+
+## **🚀 Final Notes**
+- **Traversal, Searching, Sorting are core concepts** in Arrays.  
+- **Sorting complexity varies** → Bubble Sort **O(n²)**, Quick Sort **O(n log n)**.  
+- **Binary Search only works on sorted arrays**.  
+- **Linear Search works on any array** but is slower **O(n)**.  
+
+Would you like **more advanced** problems like **Kadane’s Algorithm, Two Pointer, Sliding Window**? 🚀🔥
 Here’s a comprehensive list of coding questions on the topic of arrays categorized by level (basic, medium, and hard). Each section includes 20 questions, and the answers with explanations will follow each level.
 
 ## Basic Level Array Questions
