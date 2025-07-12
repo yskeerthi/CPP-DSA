@@ -359,7 +359,274 @@ int main() {
 }
 
 ```
+
 ## 📘 **3. Tree Traversals**
+---
+
+## 🔍 What is Traversal?
+
+Traversal = Visiting **every node** of a tree or graph in a specific order.
+
+---
+
+## 🚀 1. **DFS – Depth First Search**
+
+### 🔗 Idea:
+
+Go **deep into the structure** before backtracking.
+
+### 👣 Traversal Pattern (for Trees):
+
+* **Preorder**: Visit root → left subtree → right subtree
+* **Inorder**: Visit left → root → right
+* **Postorder**: Visit left → right → root
+
+These are all **DFS** because they explore deeply.
+
+### 🧠 DFS Steps (General Idea for Graphs):
+
+1. Visit a node.
+2. Recursively visit all its unvisited neighbors.
+
+### 🧰 Implemented using:
+
+* **Recursion** or
+* **Stack**
+
+---
+
+### 🔄 DFS Example (Tree):
+
+For this tree:
+
+```
+      1
+     / \
+    2   3
+   / \
+  4   5
+```
+
+DFS Inorder:
+
+```
+4 2 5 1 3
+```
+
+---
+
+## 🌊 2. **BFS – Breadth First Search**
+
+### 🔗 Idea:
+
+Explore **level by level** — visit all neighbors first before going deeper.
+
+### 👣 Traversal Pattern:
+
+* Start from root (or source node)
+* Visit all its immediate children
+* Then go to their children
+
+### 🧠 BFS Steps:
+
+1. Use a **queue**
+2. Push root
+3. While queue is not empty:
+
+   * Pop node
+   * Push its children
+
+### 🧰 Implemented using:
+
+* **Queue**
+
+---
+
+### 🔄 BFS Example (Tree):
+
+```
+      1
+     / \
+    2   3
+   / \
+  4   5
+```
+
+BFS:
+
+```
+1 2 3 4 5
+```
+
+---
+
+## 📋 Comparison Table
+
+| Feature            | DFS                              | BFS                                |
+| ------------------ | -------------------------------- | ---------------------------------- |
+| Full Form          | Depth First Search               | Breadth First Search               |
+| Approach           | Go deep first                    | Go wide first                      |
+| Uses               | Recursion or stack               | Queue                              |
+| Space (Worst Case) | O(h) (tree height)               | O(n) (full level)                  |
+| Tree Traversals    | Preorder, Inorder, Postorder     | Level-order                        |
+| Graph Uses         | Path finding, cycles, components | Shortest path in unweighted graphs |
+| Data Structure     | Stack (explicit or recursion)    | Queue                              |
+
+---
+
+## 💡 Where Are They Used?
+
+| Problem             | BFS or DFS? |
+| ------------------- | ----------- |
+| Maze shortest path  | BFS ✅       |
+| Check connectivity  | DFS or BFS  |
+| Topological sort    | DFS         |
+| Level-wise printing | BFS ✅       |
+| Tree traversals     | DFS ✅       |
+
+---
+
+## 🧪 Quick Code Snippet (BFS in Tree)
+
+```cpp
+void bfs(Node* root) {
+    if (!root) return;
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        Node* current = q.front(); q.pop();
+        cout << current->data << " ";
+
+        if (current->left) q.push(current->left);
+        if (current->right) q.push(current->right);
+    }
+}
+```
+Absolutely! Here's the **complete C++ code** for both **DFS (Depth First Search)** and **BFS (Breadth First Search)** on a binary tree — all in one file, clean and beginner-friendly.
+
+---
+
+## ✅ C++ Code: DFS + BFS on a Binary Tree
+
+```cpp
+#include <iostream>
+#include <queue>
+using namespace std;
+
+// -------------------------
+// Tree Node Definition
+// -------------------------
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+
+// -------------------------
+// DFS Traversal (Preorder)
+// -------------------------
+void dfs(Node* root) {
+    if (root == nullptr) return;
+
+    // Process current node
+    cout << root->data << " ";
+
+    // Recursive call to left and right
+    dfs(root->left);
+    dfs(root->right);
+}
+
+// -------------------------
+// BFS Traversal (Level Order)
+// -------------------------
+void bfs(Node* root) {
+    if (root == nullptr) return;
+
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        Node* curr = q.front();
+        q.pop();
+
+        cout << curr->data << " ";
+
+        if (curr->left) q.push(curr->left);
+        if (curr->right) q.push(curr->right);
+    }
+}
+
+// -------------------------
+// Sample Tree Construction
+// -------------------------
+Node* buildTree() {
+    /*
+        Tree structure:
+               1
+             /   \
+            2     3
+           / \   /
+          4   5 6
+    */
+    Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+
+    root->right->left = new Node(6);
+
+    return root;
+}
+
+// -------------------------
+// Main Function
+// -------------------------
+int main() {
+    Node* root = buildTree();
+
+    cout << "DFS Traversal (Preorder): ";
+    dfs(root);
+    cout << endl;
+
+    cout << "BFS Traversal (Level Order): ";
+    bfs(root);
+    cout << endl;
+
+    return 0;
+}
+```
+
+---
+
+## 🔍 Output:
+
+```
+DFS Traversal (Preorder): 1 2 4 5 3 6 
+BFS Traversal (Level Order): 1 2 3 4 5 6 
+```
+
+---
+
+## 📌 Summary:
+
+| Traversal             | What it Does                | Order                        |
+| --------------------- | --------------------------- | ---------------------------- |
+| **DFS (Preorder)**    | Go deep before backtracking | Root → Left → Right          |
+| **BFS (Level Order)** | Visit nodes level by level  | Top to bottom, left to right |
+
+---
+
+---
+
+
 
 ### 🔁 **1. Inorder Traversal (Left → Root → Right)**
 
